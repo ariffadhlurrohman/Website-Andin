@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Poppins,sans-serif;background:#080611;color:#fff}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#4a2049,#160d28 48%,#07060e 100%);z-index:-5}
+.stars,.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:white;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.3)}}
+.heart{position:absolute;bottom:-30px;font-size:20px;opacity:0;animation:up 6s linear forwards}
+@keyframes up{0%{opacity:0;transform:translateY(0) rotate(0) scale(.5)}15%{opacity:.8}100%{opacity:0;transform:translateY(-110vh) rotate(35deg) scale(1.5)}}
+.page{position:absolute;inset:0;padding:30px 20px;display:flex;align-items:center;justify-content:center;text-align:center;opacity:0;visibility:hidden;transform:scale(1.06);transition:opacity .7s,transform .7s,visibility .7s}
+.page.active{opacity:1;visibility:visible;transform:scale(1)}
+.inner{width:min(900px,100%);max-height:92vh;overflow:auto;padding:20px;scrollbar-width:none}
+.inner::-webkit-scrollbar{display:none}
+.kicker{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#e8a8cc;margin-bottom:14px}
+h1,h2,.signature{font-family:"Cormorant Garamond",serif}
+h1{font-size:clamp(65px,13vw,140px);line-height:.75;margin:0;text-shadow:0 0 35px #e267ad}
+h2{font-size:clamp(42px,7vw,70px);margin:15px 0}
+p{line-height:1.9;color:#ddd;font-size:14px}
+.btn{border:1px solid #e38abd;background:#d05c99;color:#fff;border-radius:50px;padding:14px 30px;font-family:Poppins;cursor:pointer;box-shadow:0 0 25px #d65e9c55;transition:.3s;margin-top:20px}
+.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 0 40px #e46cae99}
+.envelope{width:260px;height:180px;margin:25px auto;position:relative;cursor:pointer;animation:floatbox 2s ease-in-out infinite}
+@keyframes floatbox{50%{transform:translateY(-8px)}}
+.envbody{position:absolute;inset:0;background:#b94e82;border-radius:10px;box-shadow:0 20px 50px #0008}
+.flap{position:absolute;top:0;left:0;border-left:130px solid transparent;border-right:130px solid transparent;border-top:100px solid #e17eac;transform-origin:top;transition:.8s;z-index:3}
+.envelope.open .flap{transform:rotateX(180deg)}
+.heartseal{position:absolute;z-index:4;left:50%;top:70px;transform:translateX(-50%);font-size:35px;transition:.6s}
+.envelope.open .heartseal{opacity:0;transform:translate(-50%,-40px) scale(1.5)}
+.card{background:#ffffff0a;border:1px solid #ffffff18;border-radius:28px;padding:32px;backdrop-filter:blur(14px);box-shadow:0 20px 80px #0009}
+.letter{text-align:left}
+.signature{text-align:right;font-size:30px;color:#efb1d3}
+.reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}
+.reason{padding:22px 12px;background:#ffffff08;border:1px solid #ffffff12;border-radius:20px;transition:.3s}
+.reason:hover{transform:translateY(-5px)}
+.reason b{font-family:"Cormorant Garamond";font-size:25px;display:block;margin:8px}
+.reason small{color:#bbb;line-height:1.5}
+.timeline{text-align:left;margin-top:20px}
+.item{position:relative;padding:0 0 22px 42px}
+.item:before{content:"";position:absolute;left:7px;top:5px;width:12px;height:12px;border-radius:50%;background:#e276ad;box-shadow:0 0 20px #e276ad}
+.item:after{content:"";position:absolute;left:12px;top:18px;height:calc(100% - 8px);width:1px;background:#d46b9d55}
+.item:last-child:after{display:none}
+.item h3{font-family:"Cormorant Garamond";font-size:27px;color:#f0b7d6;margin:0}
+.item p{margin:3px 0;font-size:13px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.photo{height:230px;border-radius:18px;background:linear-gradient(135deg,#492540,#181126);border:1px solid #ffffff15;display:flex;align-items:center;justify-content:center;color:#ffffff66;font-size:12px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.bigheart{font-size:100px;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.2);filter:drop-shadow(0 0 25px #f06eaf)}}
+.secret{font-family:"Cormorant Garamond";font-size:30px;line-height:1.55;color:#ffd8ea;display:none}
+.confetti{position:fixed;top:-30px;z-index:20;font-size:20px;animation:fall 4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#ffffff66;z-index:10;white-space:nowrap}
+.back{position:fixed;left:20px;bottom:18px;z-index:15;border:1px solid #ffffff25;background:#ffffff0b;color:#fff;border-radius:30px;padding:10px 18px;font-family:Poppins;font-size:12px;cursor:pointer;backdrop-filter:blur(10px);transition:.3s;display:none}
+.back:hover{background:#ffffff18;transform:translateX(-3px)}
+.next{transition:.3s}
+.progress{position:fixed;top:18px;right:20px;font-size:11px;color:#ffffff55;z-index:10}
+@media(max-width:650px){.reasons{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr}.photo{height:240px}.card{padding:22px}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="stars" id="stars"></div><div class="hearts" id="hearts"></div>
+<div class="progress" id="progress">1 / 7</div>
+
+<section class="page active" id="p1">
+<div class="inner">
+<div class="kicker">CIEEE DAPET AMPLOPPP</div>
+<div class="envelope" id="env" onclick="openEnvelope()">
+<div class="envbody"></div><div class="flap"></div><div class="heartseal">❤️</div>
+</div>
+<h2>Untuk kesayangan,Andini</h2>
+<p>Silahkan pencet sayang, Amplopnya bukan jerawat sayang</p>
+</div></section>
+
+<section class="page" id="p2">
+<div class="inner">
+<div class="kicker">Happy Birthday</div>
+<h1><br>Andini<br>Lihynia Putri</h1>
+<p style="font-size:18px;color:#efb5d3">Hari ini semuanya tentang kamu. ❤️</p>
+<button class="btn" onclick="next()">Langsung diklik lagi aja cantik 🥳</button>
+</div></section>
+
+<section class="page" id="p3">
+<div class="inner">
+<div class="kicker">❤️❤️❤️❤️</div>
+<h2>Dibaca dengan menggunakan hati</h2>
+<div class="card letter">
+<p>Sayang,</p>
+<p>Hari ini bukan hanya tentang bertambahnya satu angka di usiamu. Hari ini adalah pengingat bahwa dunia pernah menjadi sedikit lebih indah karena kamu lahir ke dalamnya.</p>
+<p>Aku mungkin tidak selalu pandai mengungkapkan perasaan. Kadang kata-kataku terlalu sederhana untuk menjelaskan betapa berartinya kamu. Tapi kalau ada satu hal yang ingin kamu tahu, aku bersyukur pernah dipertemukan denganmu.</p>
+<p>Terima kasih karena sudah menjadi tempat aku bercerita, tempat aku tertawa, dan seseorang yang membuat hari-hari biasa terasa punya cerita.</p>
+<p>Aku tidak bisa menjanjikan setiap hari akan sempurna. Tetapi aku ingin, selama masih diberi kesempatan, ikut merayakan bahagiamu, menemanimu ketika sulit, dan mengingatkanmu bahwa kamu tidak sendirian.</p>
+<p>Semoga usia barumu membawa lebih banyak ketenangan, kesehatan, rezeki, dan mimpi yang menjadi nyata. Kalau suatu hari kamu lelah, ingatlah bahwa ada seseorang yang selalu mendoakan senyummu.</p>
+<div class="signature">— Arif Fadhlurrohman yang kamu cintai hehe ❤️</div>
+</div>
+<button class="btn" onclick="next()">Jangan nangis mending lanjut dulu 🙈</button>
+</div></section>
+
+<section class="page" id="p4">
+<div class="inner">
+<div class="kicker">Hal-hal kecil tentangmu</div>
+<h2>Yang membuat kamu spesial bagi aku</h2>
+<div class="reasons">
+<div class="reason">☺️<b>Senyummu</b><small>Selalu punya cara membuat hari yang biasa terasa lebih indah.</small></div>
+<div class="reason">✨<b>Caramu peduli</b><small>Hal-hal kecil darimu justru sering menjadi hal yang paling aku ingat.</small></div>
+<div class="reason">🌙<b>Kehadiranmu</b><small>Kamu tidak harus melakukan apa-apa. Cukup ada saja sudah berarti.</small></div>
+<div class="reason">❤️<b>Dirimu</b><small>Bukan karena sempurna, tetapi karena menjadi dirimu sendiri sudah istimewa.</small></div>
+</div>
+<button class="btn" onclick="next()">Pasti Salting jirr, Lanjut 🤪</button>
+</div></section>
+
+<section class="page" id="p5">
+<div class="inner">
+<div class="kicker">Cerita kita</div>
+<h2>Hal-hal yang ingin aku ingat</h2>
+<div class="card timeline">
+<div class="item"><h3>Pertama kali mengenalmu</h3><p>Memang kita bertemu dari sebuah game yang tidak perlu disebutkan, tapi ternyata dari sana lahir sebuah cerita yang berarti.</p></div>
+<div class="item"><h3>Saat kita mulai dekat</h3><p>Percakapan sederhana perlahan berubah menjadi sesuatu yang selalu aku tunggu.</p></div>
+<div class="item"><h3>Hari-hari yang kita lewati</h3><p>Tidak semuanya mudah, tetapi tawa dan proses saling memahami membuat semuanya berharga.</p></div>
+<div class="item"><h3>Hari ini</h3><p>Aku hanya ingin mengatakan terima kasih karena sudah hadir dan menjadi bagian dari hidupku.</p></div>
+</div>
+<button class="btn" onclick="next()">YUK LANJUT AJA SAYANG 👻</button>
+</div></section>
+
+<section class="page" id="p6">
+<div class="inner">
+<div class="kicker">BEBERAPA KENANGAN KITA</div>
+<h2>Nanti Kita Tambah Fotonya</h2>
+<div class="gallery">
+<div class="photo"><img src="Foto 1.jpeg" alt="Foto 1"></div>
+<div class="photo"><img src="Foto 1.3.jpeg" alt="Foto 2"></div>
+<div class="photo"><img src="Foto 1.2.jpeg" alt="Foto 3"></div>
+<div class="photo"><img src="Foto 4.1.jpeg" alt="Foto 1"></div>
+<div class="photo"><img src="Foto 3.1.jpeg" alt="Foto 2"></div>
+<div class="photo"><img src="Foto 4.2.jpeg" alt="Foto 3"></div>
+<div class="photo"><img src="Foto 2.jpeg" alt="Foto 2"></div>
+<div class="photo"><img src="Foto 2.1.jpeg" alt="Foto 3"></div>
+<div class="photo"><img src="Foto 2.2.jpeg" alt="Foto 3"></div>
+</div>
+<p style="font-size:11px;color:#888">When ya foto berdua lagi.</p>
+<button class="btn" onclick="next()">Satu lagi wajib dilanjut sayang 🖕🏻</button>
+</div></section>
+
+<section class="page" id="p7">
+<div class="inner">
+<div class="kicker">Halaman terakhir namun kisah kita tak akan berakhir</div>
+<div class="bigheart">❤️</div>
+<h2>Make a wish, my love.</h2>
+<p>Pejamkan mata sebentar. Buat banyak permintaan jangan satu. Setelah itu, klik done bang.</p>
+<button class="btn" onclick="secret()">Done bang ✨</button>
+<div class="secret" id="secret">“Kalau aku boleh meminta satu hadiah di hari ulang tahunmu, aku tidak meminta apa-apa untuk diriku. Aku hanya ingin kamu selalu sehat, bahagia, dan tetap menjadi alasan kenapa aku tersenyum setiap kali memikirkan masa depan.”<br><br>Selamat ulang tahun, cintaku. ❤️<br><small style="font-family:Poppins;font-size:11px;color:#aaa">Semoga kita akan terus bersama sampai maut tiba.</small></div>
+</div></section>
+
+<button class="back" id="back" onclick="backPage()">← Kembali</button>
+<div class="nav">SETIAP HALAMAN DIBUAT DENGAN CINTA ❤️</div>
+
+<script>
+let current=1,total=7;
+function show(n){
+ document.getElementById('p'+current).classList.remove('active');
+ current=n;
+ document.getElementById('p'+current).classList.add('active');
+ document.getElementById('progress').textContent=current+' / '+total;
+ document.getElementById('back').style.display=(current>1?'block':'none');
+}
+function next(){if(current<total)show(current+1)}
+function backPage(){if(current>1)show(current-1)}
+function openEnvelope(){
+ const e=document.getElementById('env');e.classList.add('open');
+ setTimeout(()=>show(2),900);
+}
+function secret(){
+ document.getElementById('secret').style.display='block';
+ for(let i=0;i<70;i++){
+  let c=document.createElement('span');c.className='confetti';
+  c.textContent=['❤️','💗','✨','🌸','💖','💕'][Math.floor(Math.random()*6)];
+  c.style.left=Math.random()*100+'vw';
+  c.style.animationDelay=Math.random()*1.3+'s';
+  document.body.appendChild(c);setTimeout(()=>c.remove(),5000);
+ }
+}
+const stars=document.getElementById('stars');
+for(let i=0;i<100;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';stars.appendChild(s)}
+const hearts=document.getElementById('hearts');
+setInterval(()=>{let h=document.createElement('span');h.className='heart';h.textContent=['❤','♡','✦','♥'][Math.floor(Math.random()*4)];h.style.left=Math.random()*100+'%';h.style.animationDuration=(5+Math.random()*5)+'s';hearts.appendChild(h);setTimeout(()=>h.remove(),10000)},500);
+</script>
+</body>
+</html>
